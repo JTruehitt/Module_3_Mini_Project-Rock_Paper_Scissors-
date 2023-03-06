@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+header {
+  background-color: #114466;
+  text-align: center;
+  color: #ffffff;
+  padding: 2em;
+  margin-block-end: 1em;
+}
+
+header p {
+  margin-block-start: 1em;
+}
+
+h2 {
+  margin-block-end: 1em;
+}
+
+.gamecontainer {
+  border: 3px solid #114466;
+  margin-inline: auto;
+  max-inline-size: 55ch;
+  text-align: center;
+  padding: 1em;
+}
+
+.gamecontainer p {
+  margin-block-end: 1em;
+}
+
+.scorelabel {
+  font-weight: bold;
+}
+
+#userSelection {
+  display: block;
+}
+
+#userSelection > * {
+  flex-basis: 100%;
+}
+#userSelection p {
+  display: inline;
+}
+
+label {
+  display: block;
+}
+
+label:last-child {
+  margin-block-end: 1em;
+}
+
+button {
+  color: white;
+  background-color: #114466;
+  padding: .5em 1em;
+  border-radius: 5px;
+}
