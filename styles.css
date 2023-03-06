@@ -57,6 +57,13 @@ label:last-child {
 button {
   color: white;
   background-color: #114466;
-  padding: .5em 1em;
+  padding: 0.75em 1.5em;
   border-radius: 5px;
+  transition: 200ms all;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 3px 2px 10px 1px rgba(0, 0, 0, 0.24);
 }
