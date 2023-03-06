@@ -3,8 +3,7 @@ const textEl = document.querySelector("#textdisplay");
 const userScore = document.querySelector("#userScore");
 const compScore = document.querySelector("#compScore");
 const gameContainer = document.querySelector(".gamecontainer");
-var userPick = "";
-var compPick = "";
+const rpsArr = ["rock", "paper", "scissors"];
 
 startBtn.addEventListener("click", startGame);
 
@@ -19,6 +18,7 @@ function startGame() {
   rockBtn.setAttribute("type", "radio");
   rockBtn.setAttribute("id", "rockBtn");
   rockBtn.setAttribute("name", "selection");
+  rockBtn.required = true;
 
   var paperLabel = document.createElement("label");
   paperLabel.setAttribute("for", "paperBtn");
@@ -48,25 +48,47 @@ function startGame() {
 
   startBtn.innerText = "Shoot!";
   startBtn.removeEventListener("click", startGame);
-  startBtn.addEventListener("click", getResult);
+  startBtn.addEventListener("click", getUserPick);
 }
 
-function getResult() {
-  // var buttonUnchecked = true
-  //   while (buttonUnchecked) {
+function getCompPick() {
+  const randNumber = Math.floor(Math.random() * 3);
+  return (compPick = rpsArr[randNumber]);
+}
+
+function getUserPick() {
   if (rockBtn.checked) {
     userPick = "rock";
-    // buttonUnchecked = false;
+    getCompPick();
+    whoWins();
   } else if (paperBtn.checked) {
     userPick = "paper";
-    // buttonUnchecked = false;
+    getCompPick();
+    whoWins();
   } else if (scissorsBtn.checked) {
     userPick = "scissors";
-    // buttonUnchecked = false;
+    getCompPick();
+    whoWins();
   } else {
     alert("Too late to back out now. Make your choice!");
+    userSelection.remove();
     startGame();
   }
-
-  console.log("you should be here");
 }
+
+function whoWins() {
+  let results = userPick + compPick;
+  if (results == "rockrock" || "paperpaper" || "scissorsscissors") {
+    console.log("draw");
+    console.log(userPick);
+    console.log(compPick);
+    console.log(results);
+  } else if (results == "rockscissors" || "paperrock" || "scissorspaper") {
+    console.log("user wins");
+  } else {
+    console.log("comp wins");
+  }
+}
+
+// figure out why result always ends in a draw, even when we are logging different comp picks and the result var is changing.
+//once figured out, set 3 new functions for win, lose draw
