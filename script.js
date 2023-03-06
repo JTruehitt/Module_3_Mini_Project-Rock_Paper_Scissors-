@@ -111,89 +111,73 @@ function whoWins() {
     compPick +
     "... \n\n";
 
-  // * runs an if else statement to check the results variable vs our groups of outcomes. depending on the outcome, the score for that outcome is increased by one from the prior value, and then posted to our defined score element to display to the user.
-  // * left all of these console logs in here as a reminder for how frustriting it was trying to logic my way through this part.
-  if (
-    results === "rockrock" ||
-    results === "paperpaper" ||
-    results === "scissorsscissors"
-  ) {
-    // console.log("draw");
-    // console.log(userPick);
-    // console.log(compPick);
-    // console.log(results);
-    drawCount += 1;
-    drawScore.innerText = drawCount;
-    // console.log(drawCount);
-    textEl.innerText += "It's a draw!";
-  } else if (
-    results === "rockscissors" ||
-    results === "paperrock" ||
-    results === "scissorspaper"
-  ) {
-    // console.log("user wins");
-    // console.log(userPick);
-    // console.log(compPick);
-    // console.log(results);
-    userWins += 1;
-    userScore.innerText = userWins;
-    // console.log(userWins);
-    textEl.innerText += "Hooray!! You win!!";
-  } else if (
-    results === "rockpaper" ||
-    results === "paperscissors" ||
-    results === "scissorsrock"
-  ) {
-    // console.log("comp wins");
-    // console.log(userPick);
-    // console.log(compPick);
-    // console.log(results);
-    compWins += 1;
-    compScore.innerText = compWins;
-    // console.log(compWins);
-    textEl.innerText += "Aww man, you lost!";
-  }
+  // * runs an if else statement to check the results variable vs our groups of outcomes. depending on the outcome, the score for that outcome is increased by one from the prior value, and then posted to our defined score element to display to the user. will produce same results as below switch statement
+  // if (
+  //   results === "rockrock" ||
+  //   results === "paperpaper" ||
+  //   results === "scissorsscissors"
+  // ) {
+  //   drawCount += 1;
+  //   drawScore.innerText = drawCount;
+  //   textEl.innerText += "It's a draw!";
+  // } else if (
+  //   results === "rockscissors" ||
+  //   results === "paperrock" ||
+  //   results === "scissorspaper"
+  // ) {
+  //   userWins += 1;
+  //   userScore.innerText = userWins;
+  //   textEl.innerText += "Hooray!! You win!!";
+  // } else if (
+  //   results === "rockpaper" ||
+  //   results === "paperscissors" ||
+  //   results === "scissorsrock"
+  // ) {
+  //   compWins += 1;
+  //   compScore.innerText = compWins;
+  //   textEl.innerText += "Aww man, you lost!";
+  // }
 
   // * This switch statement will produce the same results as the above if else statement. I just wanted to test it out to get more comfortable with switch. if/else seems better to verify if a value or expression is true/false, whereas switch just tests for different expected values of a variable. maybe switch would have caused less of a headache in this instance where there were only 9 possible outcomes
-  // switch (results) {
-  //   case "rockrock":
-  //   case "paperpaper":
-  //   case "scissorsscissors":
-  //     console.log("draw");
-  //     console.log(userPick);
-  //     console.log(compPick);
-  //     drawCount += 1;
-  //     console.log(drawCount);
-  // drawScore.innerText = drawCount;
-  // textEl.innerText += "It's a draw!"
-  //     break;
-  //   case "rockscissors":
-  //   case "paperrock":
-  //   case "scissorspaper":
-  //     console.log("user wins");
-  //     console.log(userPick);
-  //     console.log(compPick);
-  //     userWins += 1;
-  //     console.log(userWins);
-  // userScore.innerText = userWins;
-  // textEl.innerText += "Hooray!! You win!!"
-  //     break;
-  //   case "rockpaper":
-  //   case "paperscissors":
-  //   case "scissorsrock":
-  //     console.log("comp wins");
-  //     console.log(userPick);
-  //     console.log(compPick);
-  //     compWins += 1;
-  //     console.log(compWins);
-  // compScore.innerText = compWins;
-  // textEl.innerText += "Aww man, you lost!"
-  // }
+  switch (results) {
+    case "rockrock":
+    case "paperpaper":
+    case "scissorsscissors":
+      console.log("draw");
+      console.log(userPick);
+      console.log(compPick);
+      drawCount += 1;
+      console.log(drawCount);
+      drawScore.innerText = drawCount;
+      textEl.innerText += "It's a draw!";
+      break;
+    case "rockscissors":
+    case "paperrock":
+    case "scissorspaper":
+      console.log("user wins");
+      console.log(userPick);
+      console.log(compPick);
+      userWins += 1;
+      console.log(userWins);
+      userScore.innerText = userWins;
+      textEl.innerText += "Hooray!! You win!!";
+      break;
+    case "rockpaper":
+    case "paperscissors":
+    case "scissorsrock":
+      console.log("comp wins");
+      console.log(userPick);
+      console.log(compPick);
+      compWins += 1;
+      console.log(compWins);
+      compScore.innerText = compWins;
+      textEl.innerText += "Aww man, you lost!";
+  }
 
   // * finally, appends a call to action asking for another round, removes the user selection section for so if they play again the buttons don't get compounded, removed the user pick event listener, changed the inner text, and added event listener to run startGame and start it all over again.
   textEl.innerText += "\n\n How about another round?";
   userSelection.remove();
   startBtn.removeEventListener("click", getUserPick);
-  startBtn.innerText = "Let's go!";
+  startBtn.innerText = "Play Again";
   startBtn.addEventListener("click", startGame);
 }
